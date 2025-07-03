@@ -1,6 +1,10 @@
 'use client';
 
+import { useMemo } from 'react';
+
 import Image from 'next/image';
+
+import { formatPrice } from '@/utils/utils';
 
 import { ProductType } from '@/shared/types';
 
@@ -11,11 +15,10 @@ type ProductCardProps = {
 const ProductCard = ({ product }: ProductCardProps) => {
   const { title, origin, price, currency, imageUrl } = product;
 
-  const priceFormatted = new Intl.NumberFormat('ru-RU', {
-    style: 'currency',
-    currency,
-    minimumFractionDigits: 2
-  }).format(price / 100);
+  const priceFormatted = useMemo(
+    () => formatPrice(price, currency),
+    [price, currency]
+  );
 
   return (
     <div className='w-full sm:w-64 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl transition-shadow duration-300 cursor-pointer flex flex-col border border-gray-200'>
