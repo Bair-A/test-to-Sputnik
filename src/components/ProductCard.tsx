@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 
 import Image from 'next/image';
 
-import { formatPrice } from '@/utils/utils';
+import { formatPrice } from '@/utils';
 
 import { ProductType } from '@/shared/types';
 

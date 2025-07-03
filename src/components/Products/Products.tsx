@@ -6,17 +6,16 @@ import ProductCard from '@/components/ProductCard';
 
 import { ProductType } from '@/shared/types';
 
-type ProductsProps = { productsArray: ProductType[] };
+type ProductsProps = { products: ProductType[] };
 
-const Products = ({ productsArray }: ProductsProps) => {
+const Products = ({ products }: ProductsProps) => {
   return (
     <div className='flex flex-col items-center'>
       <Header />
       <div className={styles.wrapper}>
-        {productsArray.length > 0 &&
-          productsArray.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );
